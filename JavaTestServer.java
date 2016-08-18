@@ -75,13 +75,14 @@ public class JavaTestServer {
                 logger.info(client + " connected.");
                 String inputLine;
                 inputLine = in.readLine();
+                out.println(inputLine);
+                logger.info(client + " says: " + inputLine);
+                if (inputLine == null) {
+                  continue;
+                }
                 if (inputLine.toLowerCase().contains("exit")) {
                     logger.info("exit command received, quitting...");
                     break;
-                }
-                else {
-                    out.println(inputLine);
-                    logger.info(client + " says: " + inputLine);
                 }
             } catch (IOException e) {
                 System.out.println("Exception caught when trying to listen on port "
